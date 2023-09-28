@@ -1,4 +1,3 @@
-
 const PORT = 3000;
 const path = require('path');
 const Cors = require('cors');
@@ -9,10 +8,9 @@ const Strategy = require('passport-twitter').Strategy;
 const session = require('express-session');
 require('dotenv').config();
 
-
 passport.use(new Strategy({
-    consumerKey: process.env.TWITTER_CONSUMER_KEY,
     consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
+    consumerKey: process.env.TWITTER_CONSUMER_KEY,
     callbackURL: process.env.TWITTER_CALLBACK,
 }, function (token: any, tokenSecret: any, profile: any, callback: any) {
     const user = {
@@ -53,8 +51,7 @@ app.get('/profile', (req: any, res: any) => {
 app.get('/twitter/login', passport.authenticate('twitter'));
 
 app.get('/twitter/return', passport.authenticate('twitter', {
-    failureRedirect: '/'
-}), function (req: any, res: any) {
+    failureRedirect: '/'}), function (req: any, res: any) {
     res.redirect('/profile')
 });
 
