@@ -11,7 +11,7 @@ require('dotenv').config();
 passport.use(new Strategy({
     consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
     consumerKey: process.env.TWITTER_CONSUMER_KEY,
-    callbackURL: process.env.TWITTER_CALLBACK,
+    callbackURL: process.env.TWITTER_CALLBACK, 
 }, function (token: any, tokenSecret: any, profile: any, callback: any) {
     const user = {
         token,
